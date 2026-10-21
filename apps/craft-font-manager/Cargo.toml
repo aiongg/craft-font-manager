@@ -1,5 +1,5 @@
 [package]
-name = "craft-font-manager"
+name = "craft-font-manager-app"
 description = "Craft Font Manager: the fonts installed for the Craft App Suite, and Google Fonts to add"
 version.workspace = true
 edition.workspace = true
@@ -7,13 +7,22 @@ license.workspace = true
 rust-version.workspace = true
 publish = false
 
+[[bin]]
+name = "craft-font-manager"
+path = "src/main.rs"
+
 [lints]
 workspace = true
 
 [dependencies]
-craft-font-manager-core = { workspace = true }
-craft-font-manager-ui = { workspace = true }
+craft-font-manager = { workspace = true, features = ["egui"] }
+# Installed fonts for characters the interface faces lack, such as language names in their own
+# scripts in the language filter.
+craft-ui = { workspace = true, features = ["system_fonts"] }
 eframe = { workspace = true, features = ["default_fonts", "wgpu", "accesskit", "wayland", "x11", "persistence"] }
 egui = { workspace = true }
 log = { workspace = true }
 env_logger = { version = "0.11", default-features = false, features = ["auto-color", "humantime"] }
+
+[build-dependencies]
+craft-fonts-build = { workspace = true }

@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["crates/*", "apps/*"]
+members = ["apps/*"]
 
 [workspace.package]
 version = "0.1.0"
@@ -17,18 +17,11 @@ dbg_macro = "warn"
 todo = "warn"
 
 [workspace.dependencies]
-craft-font-manager-core = { path = "crates/core" }
-craft-font-manager-ui = { path = "crates/ui" }
 egui = "0.37"
 eframe = { version = "0.37", default-features = false }
-egui_kittest = "0.37"
-craft-ui = { git = "https://github.com/aiongg/craft-libs", rev = "607d38a0ddffe195467c4117937915c5ab9095af" }
-craft-i18n = { git = "https://github.com/aiongg/craft-libs", rev = "607d38a0ddffe195467c4117937915c5ab9095af" }
-craft-fonts-build = { git = "https://github.com/aiongg/craft-libs", rev = "607d38a0ddffe195467c4117937915c5ab9095af" }
-craft-font-catalog = { git = "https://github.com/aiongg/craft-libs", rev = "f44256663c85740da3cdbb44a859dc02a33b729f" }
-craft-font-store = { git = "https://github.com/aiongg/craft-libs", rev = "f44256663c85740da3cdbb44a859dc02a33b729f" }
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
+craft-font-manager = { git = "https://github.com/aiongg/craft-libs", rev = "b6d96f7df97212ed5d5ad8730a27e499fb9efa82" }
+craft-ui = { git = "https://github.com/aiongg/craft-libs", rev = "b6d96f7df97212ed5d5ad8730a27e499fb9efa82" }
+craft-fonts-build = { git = "https://github.com/aiongg/craft-libs", rev = "b6d96f7df97212ed5d5ad8730a27e499fb9efa82" }
 log = "0.4"
 
 [profile.dev.package."*"]
@@ -43,14 +36,13 @@ codegen-units = 1
 
 # The suite's patched toolkit: bidi text, IME and font fixes on egui 0.37 and winit 0.30.
 [patch.crates-io]
-ecolor = { git = "https://github.com/aiongg/egui", rev = "aa1ba0b4b4d1c5e9dd04ef01e03b538677415deb" }
-eframe = { git = "https://github.com/aiongg/egui", rev = "aa1ba0b4b4d1c5e9dd04ef01e03b538677415deb" }
-egui = { git = "https://github.com/aiongg/egui", rev = "aa1ba0b4b4d1c5e9dd04ef01e03b538677415deb" }
-egui-wgpu = { git = "https://github.com/aiongg/egui", rev = "aa1ba0b4b4d1c5e9dd04ef01e03b538677415deb" }
-egui-winit = { git = "https://github.com/aiongg/egui", rev = "aa1ba0b4b4d1c5e9dd04ef01e03b538677415deb" }
-egui_kittest = { git = "https://github.com/aiongg/egui", rev = "aa1ba0b4b4d1c5e9dd04ef01e03b538677415deb" }
-emath = { git = "https://github.com/aiongg/egui", rev = "aa1ba0b4b4d1c5e9dd04ef01e03b538677415deb" }
-epaint = { git = "https://github.com/aiongg/egui", rev = "aa1ba0b4b4d1c5e9dd04ef01e03b538677415deb" }
-epaint_default_fonts = { git = "https://github.com/aiongg/egui", rev = "aa1ba0b4b4d1c5e9dd04ef01e03b538677415deb" }
-# The winit commit egui's own Cargo.lock uses at that revision (branch craft/suite).
-winit = { git = "https://github.com/aiongg/winit", rev = "616984d542c7a3274d1c0891aa43bdb0a9807d6b" }
+ecolor = { git = "https://github.com/aiongg/egui", rev = "a7bc087cf46779732dd59f4c0c3391e7bc34593c" }
+eframe = { git = "https://github.com/aiongg/egui", rev = "a7bc087cf46779732dd59f4c0c3391e7bc34593c" }
+egui = { git = "https://github.com/aiongg/egui", rev = "a7bc087cf46779732dd59f4c0c3391e7bc34593c" }
+egui-wgpu = { git = "https://github.com/aiongg/egui", rev = "a7bc087cf46779732dd59f4c0c3391e7bc34593c" }
+egui-winit = { git = "https://github.com/aiongg/egui", rev = "a7bc087cf46779732dd59f4c0c3391e7bc34593c" }
+emath = { git = "https://github.com/aiongg/egui", rev = "a7bc087cf46779732dd59f4c0c3391e7bc34593c" }
+epaint = { git = "https://github.com/aiongg/egui", rev = "a7bc087cf46779732dd59f4c0c3391e7bc34593c" }
+epaint_default_fonts = { git = "https://github.com/aiongg/egui", rev = "a7bc087cf46779732dd59f4c0c3391e7bc34593c" }
+# The suite's winit fork, pinned with that egui revision.
+winit = { git = "https://github.com/aiongg/winit", rev = "8b35388bd719e8cc86a95971ba0bc026c9a8f058" }

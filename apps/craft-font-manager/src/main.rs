@@ -7,10 +7,13 @@
 
 use std::sync::Arc;
 
-use craft_font_manager_core::Catalog;
-use craft_font_manager_core::index;
-use craft_font_manager_core::store::{Installer, NoStore, SuiteStore};
-use craft_font_manager_ui::{FontsPanel, Options, Runner, Settings, install_interface_fonts};
+use craft_font_manager::index;
+use craft_font_manager::store::{Installer, NoStore, SuiteStore};
+use craft_font_manager::{Catalog, FontsPanel, Options, Runner, Settings, install_interface_fonts};
+use craft_ui::fonts::CraftFace as EmbeddedFace;
+
+/// craft-fonts' interface faces (build.rs); empty unless built with `CRAFT_FONTS_DIR`.
+static CRAFT_FONTS: &[EmbeddedFace] = include!(concat!(env!("OUT_DIR"), "/craft_fonts.rs"));
 
 const SETTINGS_KEY: &str = "craft-font-manager.settings";
 
@@ -52,7 +55,7 @@ fn main() -> eframe::Result {
         "Craft Font Manager",
         options,
         Box::new(move |cc| {
-            install_interface_fonts(&cc.egui_ctx);
+            install_interface_fonts(&cc.egui_ctx, CRAFT_FONTS);
             let settings: Settings = cc.storage.and_then(|s| eframe::get_value(s, SETTINGS_KEY)).unwrap_or_default();
             let options = Options { catalog, installer, index, runner: Runner::Thread };
             Ok(Box::new(Shell { app: FontsPanel::new(options, settings) }))
