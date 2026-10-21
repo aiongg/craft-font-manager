@@ -1,0 +1,17 @@
+[package]
+name = "craft-font-manager-core"
+description = "Craft Font Manager without a UI: search and filters over the Google Fonts index, installed fonts by family, and the font store interface"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]
+craft-font-catalog = { workspace = true }
+craft-i18n = { workspace = true }
+# The font store, and the pinned Google Fonts index compiled in for browsing offline.
+craft-font-store = { workspace = true, features = ["bundled-index"] }

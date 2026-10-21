@@ -1,0 +1,19 @@
+[package]
+name = "craft-font-manager"
+description = "Craft Font Manager: the fonts installed for the Craft App Suite, and Google Fonts to add"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]
+craft-font-manager-core = { workspace = true }
+craft-font-manager-ui = { workspace = true }
+eframe = { workspace = true, features = ["default_fonts", "wgpu", "accesskit", "wayland", "x11", "persistence"] }
+egui = { workspace = true }
+log = { workspace = true }
+env_logger = { version = "0.11", default-features = false, features = ["auto-color", "humantime"] }

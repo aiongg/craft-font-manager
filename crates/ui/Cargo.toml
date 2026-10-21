@@ -1,0 +1,31 @@
+[package]
+name = "craft-font-manager-ui"
+description = "Craft Font Manager's egui interface: installed fonts, the Google Fonts catalogue, install and remove"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]
+craft-font-manager-core = { workspace = true }
+# egui's default faces lead the interface font stack.
+egui = { workspace = true, features = ["default_fonts"] }
+# Installed fonts for characters the interface faces lack, such as language names in their own
+# scripts in the language filter.
+craft-ui = { workspace = true, features = ["system_fonts"] }
+craft-i18n = { workspace = true }
+serde = { workspace = true }
+log = { workspace = true }
+
+[build-dependencies]
+craft-fonts-build = { workspace = true }
+
+[dev-dependencies]
+egui_kittest = { workspace = true, features = ["wgpu", "snapshot"] }
+# Real fonts for the fake font store to install: egui's own Hack and Ubuntu Light.
+epaint_default_fonts = "0.37"
+image = { version = "0.25", default-features = false, features = ["png"] }
