@@ -8,8 +8,7 @@ or webview shells**, ever.
 The product name is **Craft Font Manager** in user-facing text. Machine names stay lowercase: the
 binary `craft-font-manager` and the app id `ai.storyteller.craft-font-manager`.
 
-Standards shared across the Craft apps live in `../craftrules`; shared code lives in
-[craft-libs](https://github.com/storytold/craft-libs).
+Shared code lives in [craft-libs](https://github.com/storytold/craft-libs).
 
 ## 1. What lives where
 
